@@ -1,0 +1,34 @@
+﻿c<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="register.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div style="text-align:center">
+        <h1 style="background: darkturquoise">register</h1>
+        <label>email</label>
+        <br /><br />
+        <input id="email" type="text" />
+        <br /><br />
+        <label>password</label>  <br /><br />
+        <!--<button style="background: darkturquoise" onclick="evalutePassword()">password</button>-->
+        <progress id="password-strength-progress" max="4" value="0" style="color:aqua" ></progress>
+        <input id="password" type="password" oninput="evalutePassword()" />
+        <br /><br />
+        <label>firstname</label>
+        <br /><br />
+        <input id="firstname" type="text" />
+        <br /><br />
+        <label>lastname</label>
+        <br /><br />
+        <input id="lastname" type="text" />
+        <br /><br />
+        <button style="background: darkturquoise" onclick="register()">register</button>
+        <br /><br />
+        <a style="text-decoration:none; color:black " href="HomePage.html">homepage</a>
+    </div>
+</body>
+</html>
