@@ -32,7 +32,7 @@ namespace LoginProject.Controllers
                 Console.WriteLine("productController:GetAllProducts:4");
                 return NotFound();
         }
-            Console.WriteLine("productController:GetAllProducts:5");
+          
             return Ok(productsDto);
         }
 
