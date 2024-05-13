@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Repositories;
 using Services;
+using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,45 +10,43 @@ namespace LoginProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class productController : ControllerBase
     {
-        private IUserService _userService;
-        public ProductController(IUserService userService)
+        private IProductService _productService;
+        private IMapper _mapper;
+        public productController(IProductService productService, IMapper mapper)
         {
-            _userService = userService;
+            _productService = productService;
+            _mapper = mapper;
         }
-        // GET: api/<ProductController>
+
         [HttpGet]
-        //public async Task<ActionResult<Product>> GetById(int id)
-        //{
-
-
-        //    return new string[] { "value1", "value2" };
-        //}
+        public async Task<ActionResult<List<ProductDto>>> GetAllProducts()
+        {
+            Console.WriteLine("productController:GetAllProducts:1");
+            List<Product> products = await _productService.getAllProducts();
+            Console.WriteLine("productController:GetAllProducts:2");
+            List<ProductDto> productsDto = _mapper.Map<List<Product>, List<ProductDto>>(products);
+            Console.WriteLine("productController:GetAllProducts:3");
+            if (productsDto == null) {
+                Console.WriteLine("productController:GetAllProducts:4");
+                return NotFound();
+        }
+            Console.WriteLine("productController:GetAllProducts:5");
+            return Ok(productsDto);
+        }
 
         // GET api/<ProductController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Product>> GetById(int id)
         {
-            return "value";
+            Product product = await _productService.getProductById(id);
+            ProductDto productDto = _mapper.Map<Product, ProductDto>(product);
+            if (productDto == null)
+                return NotFound();
+            return Ok(productDto);
         }
 
-        // POST api/<ProductController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ProductController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ProductController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+   
     }
 }

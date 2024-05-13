@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Repositories;
 
-public  class Product
+public  class ProductDto
 {
     public int ProductId { get; set; }
 
@@ -17,7 +17,7 @@ public  class Product
 
     public string? Picture { get; set; }
 
-    public virtual Category? Category { get; set; }
+    //public virtual Category? Category { get; set; }
 
-    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+    //public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 }

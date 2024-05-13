@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Repositories;
+namespace DTO;
 
-public partial class User
+internal class UserUpdate
 {
     public int UserId { get; set; }
     [EmailAddress]
@@ -16,7 +19,4 @@ public partial class User
 
     public string? Password { get; set; }
 
-    public List<int> orderId { get; set; } = new List<int>();
-
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

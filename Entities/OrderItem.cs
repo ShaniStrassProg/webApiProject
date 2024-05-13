@@ -3,9 +3,10 @@ using System.Collections.Generic;
 
 namespace Repositories;
 
-public partial class OrderItem
+public  class OrderItem
 {
     public int OrderItemId { get; set; }
+
 
     public int ProductId { get; set; }
 
@@ -13,7 +14,7 @@ public partial class OrderItem
 
     public int Quaninty { get; set; }
 
-    //public virtual Order Order { get; set; } = null!;
+    public virtual Order? Order { get; set; } = null!;
 
-    //public virtual Product Product { get; set; } = null!;
+    public virtual Product? Product { get; set; } = null!;
 }

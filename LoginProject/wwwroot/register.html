@@ -8,28 +8,30 @@
     <title></title>
 </head>
 <body>
-    <div style="text-align:center">
-        <h1 >register</h1>
-        <label>email</label>
-        <br /><br />
-        <input id="email" type="text" />
-        <br /><br />
-        <label>password</label>  <br /><br />
-        <!--<button style="background: darkturquoise" onclick="evalutePassword()">password</button>-->
-        <progress id="password-strength-progress" max="4" value="0" ></progress>
-        <input id="password" type="password" oninput="evalutePassword()" />
-        <br /><br />
-        <label>firstname</label>
-        <br /><br />
-        <input id="firstname" type="text" />
-        <br /><br />
-        <label>lastname</label>
-        <br /><br />
-        <input id="lastname" type="text" />
-        <br /><br />
-        <button  onclick="register()">register</button>
-        <br /><br />
-        <a  href="HomePage.html">homepage</a>
+    <div class="container">
+        <form>
+            <h1>register</h1>
+            <label>email</label>
+            <br /><br />
+            <input id="email" type="email" required/>
+            <br /><br />
+            <label>password</label>  <br /><br />
+            <!--<button style="background: darkturquoise" onclick="evalutePassword()">password</button>-->
+            <progress id="password-strength-progress" max="4" value="0"></progress>
+            <input id="password" type="password" oninput="evalutePassword()" />
+            <br /><br />
+            <label>firstname</label>
+            <br /><br />
+            <input id="firstname" type="text" />
+            <br /><br />
+            <label>lastname</label>
+            <br /><br />
+            <input id="lastname" type="text" />
+            <br /><br />
+            <button type="submit" onclick="register()">register</button>
+            <br /><br />
+            <a href="HomePage.html">homepage</a>
+        </form>
     </div>
 </body>
 </html>

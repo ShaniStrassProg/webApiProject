@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using DTO;
+//using Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
@@ -19,56 +20,29 @@ namespace Repositories
                 return null;
             return foundUser;
 
-            //using (StreamReader reader = System.IO.File.OpenText("../Users.txt"))
-            //{
-            //    string? currentUserInFile;
-            //    while ((currentUserInFile = reader.ReadLine()) != null)
-            //    {
-            //        User user = JsonSerializer.Deserialize<User>(currentUserInFile);
-            //        if (user.UserId == id)
-            //            return user;
 
-            //    }
-            //    return null;
-            //}
         }
-        public async Task<User> GetUserByEmailAndPassword(UserLogin userLogin)
+        public async Task<User> GetUserByEmailAndPassword(UserLoginDto userLogin)
         {
-            var s= await _photoGalleryContext.Users.Where(e => e.Email == userLogin.Email && e.Password == userLogin.Password).FirstOrDefaultAsync();
-            return s; 
-            
-            //using (StreamReader reader = System.IO.File.OpenText("Users.txt"))
-            //{
-            //    string? currentUserInFile;
-            //    while ((currentUserInFile = reader.ReadLine()) != null)
-            //    {
-            //        User user = JsonSerializer.Deserialize<User>(currentUserInFile);
-            //        if (user.Email == userLogin.Email && user.Password == userLogin.Password)
-            //            return user;
-            //    }
+            var s = await _photoGalleryContext.Users.Where(e => e.Email == userLogin.Email && e.Password == userLogin.Password).FirstOrDefaultAsync();
+            return s;
 
-            //}
-            //return null;
+
         }
 
         public async Task<User> addUser(User user)
         {
-            try { 
-             await _photoGalleryContext.Users.AddAsync(user);
-            await _photoGalleryContext.SaveChangesAsync();
-            return user;
+            try
+            {
+                await _photoGalleryContext.Users.AddAsync(user);
+                await _photoGalleryContext.SaveChangesAsync();
+                return user;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
-            //Console.WriteLine("register");
-            //string filePath = "Users.txt";
-            //int numberOfUsers = System.IO.File.ReadLines(filePath).Count();
-            //user.UserId = numberOfUsers + 1;
-            //string userJson = JsonSerializer.Serialize(user);
-            //System.IO.File.AppendAllText(filePath, userJson + Environment.NewLine);
-            //return user;
+
 
         }
         public async Task<User> updateUser(int id, User userToUpdate)
@@ -80,31 +54,10 @@ namespace Repositories
             await _photoGalleryContext.SaveChangesAsync();
             return userToUpdate;
         }
-        //    string textToReplace = string.Empty;
-        //    string filePath = " Users.txt";
-        //    using (StreamReader reader = System.IO.File.OpenText("Users.txt"))
-        //    {
-        //        string currentUserInFile;
-        //        while ((currentUserInFile = reader.ReadLine()) != null)
-        //        {
 
-        //            User user = JsonSerializer.Deserialize<User>(currentUserInFile);
-        //            if (user.UserId == id)
-        //                textToReplace = currentUserInFile;
-        //        }
-        //    }
-
-        //    if (textToReplace != string.Empty)
-        //    {
-        //        string text = System.IO.File.ReadAllText("Users.txt");
-        //        text = text.Replace(textToReplace, JsonSerializer.Serialize(userToUpdate));
-        //        System.IO.File.WriteAllText("Users.txt", text);
-        //        return true;
-        //    }
-        //    return false;
-
+        //public Task<User> GetUserByEmailAndPassword(UserLoginDto userLoginDto)
+        //{
+        //    throw new NotImplementedException();
         //}
-
-       
     }
 }

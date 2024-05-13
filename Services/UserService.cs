@@ -1,4 +1,6 @@
-﻿using Entities;
+﻿using DTO;
+//using Entities;
+
 using Repositories;
 using System.Data;
 using Zxcvbn;
@@ -17,7 +19,7 @@ namespace Services
         {
             return await _userRepository.getUserById(id);
         }
-        public async Task<User> GetUserByEmailAndPassword(UserLogin userLogin)
+        public async Task<User> GetUserByEmailAndPassword(UserLoginDto userLogin)
         {
 
             return await _userRepository.GetUserByEmailAndPassword(userLogin);
@@ -39,5 +41,15 @@ namespace Services
             var result = Zxcvbn.Core.EvaluatePassword(password);
             return (int)result.Score;
         }
+
+        //public Task<User> GetUserByEmailAndPassword(UserLoginDto userLogin)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task<User> GetUserByEmailAndPassword(UserLoginDto userLogin)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
