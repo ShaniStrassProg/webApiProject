@@ -58,3 +58,13 @@ button {
         transform: scale(1.1);
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     }
+progress {
+    width: 100%;
+    padding: 15px;
+    background-image: linear-gradient(to right, #4e1c81, #00bcd4, #e91e63, #4caf50); /* Gradient: Purple to Green */
+    color: #ffffff; /* White */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}

@@ -38,7 +38,7 @@ const update = async () => {
         UserId: document.getElementById("id").value
 
     }
-    debugger;
+    
     const response = await fetch(`api/users/${user.UserId}`, {
         method: 'PUT',
         headers: {
