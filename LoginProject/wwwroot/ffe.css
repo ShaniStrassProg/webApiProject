@@ -1,0 +1,110 @@
+﻿/*I can provide you with a CSS file with colorful and visually appealing styles for the HTML elements in your code snippet. Here is the CSS content:
+
+```css*/
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #66c2ff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.QuickLinks ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.BagSummary {
+    position: relative;
+    margin-right: 10px;
+}
+
+/* Product Card Styles */
+.card {
+    background-color: #ffc266;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    float: left;
+}
+
+.img-w img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.price {
+    color: #ff3333;
+    font-weight: bold;
+}
+
+/* Filters Styles */
+#filters {
+    background-color: #ffcccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+    padding: 8px;
+    margin-right: 10px;
+    border: 2px solid #ff6666;
+    border-radius: 5px;
+    color: #333;
+}
+
+.priceInputText {
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #ff6666;
+    border-radius: 5px;
+}
+
+/* Pagination Styles */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+    .pagination a {
+        text-decoration: none;
+        color: #6699ff;
+        padding: 5px 10px;
+        border: 2px solid #6699ff;
+        border-radius: 5px;
+        margin: 0 5px;
+    }
+
+.goToCart {
+    background-color: #ff6666;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+/* Additional Styling */
+/* Add more specific styles as needed based on your design */
+/*```
+
+You can save this CSS code in a file named `d.css` and link it in your HT*//*ML file using `<link href="d.css" rel="stylesheet" / > ` in the `<head > ` section. Feel free to adjust the colors and styles to suit your project's requirements. If you need further customization or have more programming-related questions, feel free to ask!
+*/

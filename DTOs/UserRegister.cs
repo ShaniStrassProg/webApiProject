@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO;
 
-internal class UserRegister
+public class UserRegister
 {
     [EmailAddress]
     public string? Email { get; set; }

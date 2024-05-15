@@ -14,16 +14,12 @@ namespace Services
         {
             _userRepository = userRepository;
         }
-      
-        public async Task<User> getUserById(int id)
-        {
-            return await _userRepository.getUserById(id);
-        }
-        public async Task<User> GetUserByEmailAndPassword(UserLoginDto userLogin)
-        {
 
-            return await _userRepository.GetUserByEmailAndPassword(userLogin);
-        }
+        //public async Task<UserRegister> getUserById(int id)
+        //{
+        //    return await _userRepository.getUserById(id);
+        //}
+
         public async Task<User> addUser(User user)
         {
 
@@ -33,8 +29,9 @@ namespace Services
         }
         public async Task<User> updateUser(int id, User userToUpdate)
         {
-            //בדיקת הסיסמה
-            return  await _userRepository.updateUser(id, userToUpdate);
+            if (evalutePassword(userToUpdate.Password) < 2)
+                return null;
+            return await _userRepository.updateUser(id, userToUpdate);
         }
         public int evalutePassword(string password)
         {
@@ -42,14 +39,13 @@ namespace Services
             return (int)result.Score;
         }
 
-        //public Task<User> GetUserByEmailAndPassword(UserLoginDto userLogin)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
-        //public Task<User> GetUserByEmailAndPassword(UserLoginDto userLogin)
-        //{
-        //    throw new NotImplementedException();
-        //}
+
+        public Task<User> GetUserByEmailAndPassword(User userLogin)
+        {
+            return _userRepository.GetUserByEmailAndPassword(userLogin);
+        }
+
+        
     }
 }

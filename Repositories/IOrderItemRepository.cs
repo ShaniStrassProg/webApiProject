@@ -7,6 +7,6 @@ namespace Repositories
     {
         OrderItem addOrderItem(OrderItemDto orderItemDto);
         Task<List<OrderItemDto>> getAllOrderItems();
-        Task<User> updateUser(int id, User userToUpdate);
+        //Task<User> updateUser(int id, User userToUpdate);
     }
 }

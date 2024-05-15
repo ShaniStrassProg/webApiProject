@@ -21,7 +21,7 @@
 const getAllProducts = async () => {
 
     const response = await fetch('api/product')
-    debugger
+    
     if (!response.ok) {
         throw new Error(`error! status:${response.status}`)
     }

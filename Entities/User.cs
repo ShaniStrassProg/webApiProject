@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Repositories;
 
-public partial class User
+public  class User
 {
     public int UserId { get; set; }
     [EmailAddress]
@@ -16,7 +16,7 @@ public partial class User
 
     public string? Password { get; set; }
 
-    public List<int> orderId { get; set; } = new List<int>();
+    //public List<int> orderId { get; set; } = new List<int>();
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }
