@@ -7,7 +7,7 @@ const register = async () => {
         LastName: document.getElementById("lastname").value,
        
     }
-    const response = await fetch('api/users/', {
+    const response = await fetch(`api/users/${id}`, {
       
         method: 'POST',
         headers: {
@@ -33,10 +33,10 @@ const update = async () => {
         Password: document.getElementById("password").value,
         FirstName: document.getElementById("firstname").value,
         LastName: document.getElementById("lastname").value,
-        id: document.getElementById("id").value
+
     }
-    //const Id = JSON.parse(sessionStorage.getItem('user'))//.id
-    const response = await fetch("api/users/" + user.id, {
+    const userRes =  JSON.parse(sessionStorage.getItem('user'))
+    const response = await fetch("api/users/" + userRes.userId, {
 
         method: 'PUT',
         headers: {

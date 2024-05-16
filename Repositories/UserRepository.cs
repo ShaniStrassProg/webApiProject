@@ -45,10 +45,14 @@ namespace Repositories
 
         public async Task<User> updateUser(int id, User userToUpdate)
         {
-            var foundUser = await _photoGalleryContext.Users.FindAsync(id);
-            if (foundUser == null)
-                return null;
-            _photoGalleryContext.Entry(foundUser).CurrentValues.SetValues(userToUpdate);
+            //User foundUser = await _photoGalleryContext.Users.FindAsync(id);
+            //if (foundUser == null)
+            //    return null;
+            //_photoGalleryContext.Entry(foundUser).CurrentValues.SetValues(userToUpdate);
+            //await _photoGalleryContext.SaveChangesAsync();
+            //return userToUpdate;
+            userToUpdate.UserId = id;
+            _photoGalleryContext.Update(userToUpdate);
             await _photoGalleryContext.SaveChangesAsync();
             return userToUpdate;
         }
