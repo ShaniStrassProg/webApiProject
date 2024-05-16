@@ -11,7 +11,7 @@ namespace LoginProject
             CreateMap<Product, ProductDto>();
             CreateMap<UserLoginDto, User>();
             CreateMap<UserRegister,User>().ReverseMap();
-            //CreateMap<UserUpdate, User>().ReverseMap();
+            CreateMap<OrderDto, Order>().ReverseMap();
         }
 
     }

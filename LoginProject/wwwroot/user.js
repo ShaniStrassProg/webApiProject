@@ -44,7 +44,7 @@ const update = async () => {
         },
         body: JSON.stringify(user)
     });
-   
+    const data = await response.json()
     
     if (response.ok==false) {
 
@@ -52,8 +52,10 @@ const update = async () => {
     }
     else {
         alert("update succesed!!")
+        sessionStorage.setItem("user", JSON.stringify(data));
+        window.location.href = "products.html"
     }
-    window.location.href = "HomePage.html"
+    
 }
 
 

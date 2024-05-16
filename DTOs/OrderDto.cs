@@ -13,7 +13,7 @@ public partial class OrderDto
 
     public int UserId { get; set; }
 
-    public List<OrderItemDto> OrderItems { get; set; } = new List<OrderItemDto>();
+    //public List<OrderItemDto> OrderItems { get; set; } = new List<OrderItemDto>();
 
     //public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 

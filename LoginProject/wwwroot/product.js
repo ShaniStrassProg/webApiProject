@@ -10,8 +10,7 @@
         clone.querySelector('.description').textContent = product.description;
 
         clone.querySelector('button').addEventListener('click', () => {
-
-            console.log('Product added to cart:', product.Description);
+            updateProductInStorage(product)
         });
 
         document.getElementById('ProductList').appendChild(clone);
@@ -32,4 +31,23 @@ const getAllProducts = async () => {
 
     }
 }
+
+function updateProductInStorage(prod) {
+    const basket = JSON.parse(sessionStorage.getItem('basket')) || [];
+    const productIndex = basket.findIndex(product => product.productId === prod.productId);
+    console.log(productIndex)
+    if (productIndex !== -1) {
+        basket[productIndex].quaninty++;
+    } else {
+        prod = { ...prod, quaninty :1 }
+        basket.push(prod);
+    }
+
+    sessionStorage.setItem('basket', JSON.stringify(basket));
+    updateSum()
+}
+const updateSum = () => {
+
+}
+
 getAllProducts()
