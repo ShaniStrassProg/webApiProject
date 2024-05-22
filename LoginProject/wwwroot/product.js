@@ -45,7 +45,7 @@ function updateProductInStorage(prod) {
 
     sessionStorage.setItem('basket', JSON.stringify(basket));
     sessionStorage.setItem("price",prod.price)
-    conditionMet= true
+    //conditionMet= true
     updateSum()
 }
 const updateSum = () => {
