@@ -16,7 +16,7 @@
         document.getElementById('ProductList').appendChild(clone);
     });
 }
-
+const conditionMet=false
 const getAllProducts = async () => {
 
     const response = await fetch('api/product')
@@ -44,10 +44,20 @@ function updateProductInStorage(prod) {
     }
 
     sessionStorage.setItem('basket', JSON.stringify(basket));
+    sessionStorage.setItem("price",prod.price)
+    conditionMet= true
     updateSum()
 }
 const updateSum = () => {
-
-}
+    const sum = sessionStorage.getItem('price')
+    const currentSum = parseInt(document.getElementById('sum').textContent);
+    const newSum = currentSum + sum;
+    document.getElementById('sum').textContent = newSum;
+}   
 
 getAllProducts()
+setInterval(updateValue, 2000);
+
+
+
+

@@ -7,7 +7,7 @@ const register = async () => {
         LastName: document.getElementById("lastname").value,
        
     }
-    const response = await fetch(`api/users/${id}`, {
+    const response = await fetch(`api/users/`, {
       
         method: 'POST',
         headers: {

@@ -20,6 +20,7 @@ const addOrder = async () => {
     }
     else {
         alert("add order")
+        sessionStorage.setItem('basket',[])
         return data.orderId
     }
 }
