@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using NLog.Web;
 using Repositories;
 using Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,11 +14,11 @@ builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 builder.Services.AddTransient<IOrderService, OrderService>();
-builder.Services.AddDbContext<PhotoGalleryContext>(options => options.UseSqlServer("Data Source=srv2\\PUPILS;Initial Catalog=PhotoGallery;Trusted_Connection=True;TrustServerCertificate=True"));
+builder.Services.AddDbContext<PhotoGalleryContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("school")));
 
 // Add services to the container.
 
-
+builder.Host.UseNLog();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

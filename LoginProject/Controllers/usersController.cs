@@ -18,10 +18,12 @@ namespace LoginProject.Controllers
     {
         private IUserService _userService;
         private IMapper _mapper;
-        public UsersController(IUserService userService, IMapper mapper)
+        private readonly ILogger<UsersController> _logger
+        public UsersController(IUserService userService, IMapper mapper, ILogger<UsersController> logger)
         {
             _userService = userService;
             _mapper = mapper;
+            _logger = logger;
         }
 
         [HttpPost]
@@ -49,6 +51,7 @@ namespace LoginProject.Controllers
         [Route("login")]
         public async Task<ActionResult<User>> GetByEmailAndPassword([FromBody] UserLoginDto userLogin)
         {
+            _logger.LogInformation("Login with user {0} and password {1}", userLogin.Email, userLogin.Password);
             User user = _mapper.Map<UserLoginDto,User>(userLogin);
             User userFound = await _userService.GetUserByEmailAndPassword(user);
             if (userFound == null)
