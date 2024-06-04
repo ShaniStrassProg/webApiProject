@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    internal interface ICategoryService
+    public interface ICategoryService
     {
         Task<Category> addCategory(Category category);
         Task<Category> GetCategoryById(int id);
+        Task<List<Category>> getCategories();
         Task<Category> updateCategory(int id, Category category);
     }
 }

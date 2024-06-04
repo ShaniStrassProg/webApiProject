@@ -8,7 +8,7 @@ namespace Repositories
     {
         //Task<User> addUser(User user);
         Task<CategoryDto> getCategoryById(int id);
-        Task<List<Category>> getAllCategories();
+        Task<List<Category>> getCategories();
         //Task<User> updateUser(int id, User userToUpdate);
     }
 }

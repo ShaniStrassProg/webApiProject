@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entiti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories\Repositories.csproj", "{9AD9B83C-20F3-42D2-ABF5-A8F23F4AD5AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTOs\DTO.csproj", "{B7DCAC9C-D8C0-44F2-A322-CDD2FED3EF33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTOs\DTO.csproj", "{B7DCAC9C-D8C0-44F2-A322-CDD2FED3EF33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{BA7E0FF7-6223-432B-AD64-C6A5011E78D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{B7DCAC9C-D8C0-44F2-A322-CDD2FED3EF33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7DCAC9C-D8C0-44F2-A322-CDD2FED3EF33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7DCAC9C-D8C0-44F2-A322-CDD2FED3EF33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA7E0FF7-6223-432B-AD64-C6A5011E78D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA7E0FF7-6223-432B-AD64-C6A5011E78D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA7E0FF7-6223-432B-AD64-C6A5011E78D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA7E0FF7-6223-432B-AD64-C6A5011E78D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

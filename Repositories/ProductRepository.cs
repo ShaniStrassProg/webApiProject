@@ -13,14 +13,19 @@ namespace Repositories
         {
             _photoGalleryContext = photoGalleryContext;
         }
-        public async Task<List<Product>> getAllProducts()
+        public async Task<List<Product>> getProducts(int position,int skip,string? desc,int? minPrice
+            ,int? maxPrice, int?[] categoryIds )
         {
-            var products = await _photoGalleryContext.Products.ToListAsync();
-            if (products == null)
-                return null;
+            var query = _photoGalleryContext.Products.Where(product =>
+             (desc == null ? (true) : (product.ProductName.Contains(desc)))
+            && ((minPrice == null) ? (true) : (product.Price >= minPrice))
+            && ((maxPrice == null) ? (true) : (product.Price <= maxPrice))
+            && ((categoryIds.Length == 0) ? (true) : (categoryIds.Contains(product.CategoryId)))).OrderBy(product => product.Price);
+            Console.WriteLine(query.ToQueryString());
+            List<Product> products = await query.ToListAsync();
             return products;
-
         }
+
 
         public async Task<Product> getProductById(int id)
         {

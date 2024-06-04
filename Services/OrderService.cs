@@ -24,14 +24,13 @@ namespace Services
             return await _orderRepository.addOrder(order);
         }
 
-       public async Task<int> sumToPay(ICollection<OrderItem> orderItems)
+       private async Task<int> sumToPay(ICollection<OrderItem> orderItems)
         {
             int totalSum = 0;
             foreach (var orderItem in orderItems)
             {
                 Product p = await  _productRepository.getProductById(orderItem.ProductId);
-                int price = (int)p.Price;
-                // Calculate the subtotal for each OrderItem and add it to the total sum
+                int price = (int)p.Price;// Calculate the subtotal for each OrderItem and add it to the total sum
                 int subtotal = orderItem.Quaninty * price;
                 totalSum += subtotal;
             }

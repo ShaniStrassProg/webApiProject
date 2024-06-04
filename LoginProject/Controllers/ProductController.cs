@@ -21,19 +21,17 @@ namespace LoginProject.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> GetAllProducts()
+        public async Task<ActionResult<List<ProductDto>>> GetProducts([FromQuery]int position, [FromQuery] int skip, [FromQuery] string? desc, [FromQuery] int? minPrice
+            , [FromQuery] int? maxPrice, [FromQuery] int?[] categoryIds)
         {
-            Console.WriteLine("productController:GetAllProducts:1");
-            List<Product> products = await _productService.getAllProducts();
-            Console.WriteLine("productController:GetAllProducts:2");
+            List<Product> products = await _productService.getProducts(position, skip, desc, minPrice,maxPrice, categoryIds);
             List<ProductDto> productsDto = _mapper.Map<List<Product>, List<ProductDto>>(products);
-            Console.WriteLine("productController:GetAllProducts:3");
-            if (productsDto == null) {
-                Console.WriteLine("productController:GetAllProducts:4");
-                return NotFound();
-        }
-          
-            return Ok(productsDto);
+            if (productsDto != null)
+            {
+                return Ok(productsDto);
+              
+            }
+             return NotFound();
         }
 
         // GET api/<ProductController>/5
