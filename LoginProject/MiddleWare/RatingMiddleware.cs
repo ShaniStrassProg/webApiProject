@@ -5,7 +5,7 @@ using Repositories;
 using Services;
 using System.Threading.Tasks;
 
-namespace LoginProject
+namespace LoginProject.MiddleWare
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class RatingMiddleware
@@ -20,17 +20,17 @@ namespace LoginProject
 
         public Task Invoke(HttpContext httpContext, IRatingService ratingService)
         {
-            
-                Rating? rating = new Rating();
-                rating.Host = httpContext.Request.Host.Value;
-                rating.Method = httpContext.Request.Method;
-                rating.Path = httpContext.Request.Path;
-                rating.Referer = httpContext.Request.Headers["Referer"];
-                rating.UserAgent = httpContext.Request.Headers["User-Agent"];
-                rating.RecordDate = DateTime.Now;
-                ratingService.addRating(rating);
-                return _next(httpContext);
-            
+
+            Rating? rating = new Rating();
+            rating.Host = httpContext.Request.Host.Value;
+            rating.Method = httpContext.Request.Method;
+            rating.Path = httpContext.Request.Path;
+            rating.Referer = httpContext.Request.Headers["Referer"];
+            rating.UserAgent = httpContext.Request.Headers["User-Agent"];
+            rating.RecordDate = DateTime.Now;
+            ratingService.addRating(rating);
+            return _next(httpContext);
+
         }
     }
 

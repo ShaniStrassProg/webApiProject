@@ -1,6 +1,7 @@
-using LoginProject;
+using LoginProject.MiddleWare;
 using Microsoft.EntityFrameworkCore;
 using NLog.Web;
+using PresidentsApp.Middlewares;
 using Repositories;
 using Services;
 
@@ -32,6 +33,8 @@ builder.Services.AddControllers();
 
 
 var app = builder.Build();
+
+app.UseErrorHandlingMiddleware();
 
 if (app.Environment.IsDevelopment())
 {

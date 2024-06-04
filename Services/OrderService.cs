@@ -1,4 +1,6 @@
 ﻿using DTO;
+using Microsoft.Extensions.Logging;
+
 //using Entities;
 
 using Repositories;
@@ -11,16 +13,21 @@ namespace Services
     {
         private IOrderRepository _orderRepository;
         private IProductRepository _productRepository;
-       public OrderService(IOrderRepository orderRepository,IProductRepository productRepository)
+        private ILogger<OrderService> _logger;
+       public OrderService(IOrderRepository orderRepository,IProductRepository productRepository,ILogger<OrderService> logger)
         {
             _orderRepository = orderRepository;
             _productRepository = productRepository;
+            _logger = logger;
         }
 
         public async Task<Order> addOrder(Order order)
         {
             order.OrderDate =  DateOnly.FromDateTime(DateTime.Now.Date);
-            order.OrderSum = await sumToPay(order.OrderItems);
+            int totalSum = await sumToPay(order.OrderItems);
+            if (totalSum != order.OrderSum)
+
+            order.OrderSum = totalSum;
             return await _orderRepository.addOrder(order);
         }
 

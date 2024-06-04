@@ -18,7 +18,6 @@ namespace Repositories
 
         public async Task<Order> addOrder(Order order)
         {
-
             await _photoGalleryContext.Orders.AddAsync(order);
             await _photoGalleryContext.SaveChangesAsync();
             return order;
