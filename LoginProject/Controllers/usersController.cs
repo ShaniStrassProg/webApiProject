@@ -18,7 +18,7 @@ namespace LoginProject.Controllers
     {
         private IUserService _userService;
         private IMapper _mapper;
-        private readonly ILogger<UsersController> _logger
+        private readonly ILogger<UsersController> _logger;
         public UsersController(IUserService userService, IMapper mapper, ILogger<UsersController> logger)
         {
             _userService = userService;
@@ -36,17 +36,6 @@ namespace LoginProject.Controllers
             return BadRequest();
         }
 
-
-
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<User>> GetById(int id)
-        //{
-        //    User user = await _userService.getUserById(id);
-        //    if (user != null)
-        //        return Ok(user);
-        //    return NotFound();
-        //}
-        // GET: api/<UserController>
         [HttpPost]
         [Route("login")]
         public async Task<ActionResult<User>> GetByEmailAndPassword([FromBody] UserLoginDto userLogin)
