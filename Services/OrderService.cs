@@ -13,7 +13,7 @@ namespace Services
     {
         private IOrderRepository _orderRepository;
         private IProductRepository _productRepository;
-        private ILogger<OrderService> _logger;
+        private readonly ILogger<OrderService> _logger;
        public OrderService(IOrderRepository orderRepository,IProductRepository productRepository,ILogger<OrderService> logger)
         {
             _orderRepository = orderRepository;
@@ -26,7 +26,7 @@ namespace Services
             order.OrderDate =  DateOnly.FromDateTime(DateTime.Now.Date);
             int totalSum = await sumToPay(order.OrderItems);
             if (totalSum != order.OrderSum)
-
+                _logger.LogError($"sum to pay isn't equal ${order.UserId}");
             order.OrderSum = totalSum;
             return await _orderRepository.addOrder(order);
         }

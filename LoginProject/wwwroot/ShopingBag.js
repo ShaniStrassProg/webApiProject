@@ -16,6 +16,7 @@
         tbody.appendChild(clone);
     });
 }
+
 const getBasketFromStorage = () => {
     const baskets = JSON.parse(sessionStorage.getItem("basket"));
     if (baskets)
@@ -26,8 +27,8 @@ const getBasketFromStorage = () => {
 const addOrder = async () => {
     const order = {
         userId: JSON.parse(sessionStorage.getItem('user')).userId,
-        orderItems: JSON.parse(sessionStorage.getItem("basket"))
-
+        orderItems: JSON.parse(sessionStorage.getItem("basket")),
+        OrderSum: JSON.parse(sessionStorage.getItem("sumToPay"))
     }
     const response = await fetch("api/order", {
 
@@ -48,6 +49,7 @@ const addOrder = async () => {
         sessionStorage.removeItem('basket')
     }
 }
+
 
 
 

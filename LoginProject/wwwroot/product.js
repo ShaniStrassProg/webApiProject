@@ -22,10 +22,9 @@ function updateProductInStorage(prod) {
 
 
 const updateSum =  (sum) => {
-    //const sum1 = sessionStorage.getItem('sumToPay') || 0;    
-    const currentSum = parseInt(document.getElementById('sum').textContent);
+    const currentSum = sessionStorage.getItem('sumToPay') || 0;    
+    //const currentSum = parseInt(document.getElementById('sum').textContent);
     const newSum = currentSum + sum;
-    document.getElementById('sum').textContent = newSum;
     sessionStorage.setItem('sumToPay', newSum)
 }
 
