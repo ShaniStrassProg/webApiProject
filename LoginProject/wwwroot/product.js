@@ -15,16 +15,16 @@ function updateProductInStorage(prod) {
     }
 
     sessionStorage.setItem('basket', JSON.stringify(basket));
-    sessionStorage.setItem("price",prod.price)
+    //sessionStorage.setItem("price",prod.price)
     //conditionMet= true
-    updateSum()
+    updateSum(prod.price)
 }
 
 
-const updateSum =  (sum) => {
-    const currentSum = sessionStorage.getItem('sumToPay') || 0;    
-    //const currentSum = parseInt(document.getElementById('sum').textContent);
+const updateSum = async (sum) => {  
+    const currentSum = parseInt(document.getElementById('sum').textContent);
     const newSum = currentSum + sum;
+    document.getElementById('sum').textContent = newSum;
     sessionStorage.setItem('sumToPay', newSum)
 }
 
@@ -141,8 +141,18 @@ const drawBasket = () => {
     });
 
 }
+const pay = () => {
+    const sumElement = document.getElementById('sum');
+    if (sumElement && sessionStorage.getItem("sumToPay") !== null) {
+        sumElement.textContent = sessionStorage.getItem("sumToPay");
+    }
+};
 
+// Update immediately on load
+//pay();
 
+// Call updateSum function every 1 second
+setInterval(pay, 50);
 
 
 
@@ -153,6 +163,7 @@ const drawBasket = () => {
 
 getCategories()
 getAllProducts()
+
 //setInterval(updateValue, 2000);
 
 
