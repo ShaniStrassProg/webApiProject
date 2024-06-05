@@ -15,9 +15,8 @@ function updateProductInStorage(prod) {
     }
 
     sessionStorage.setItem('basket', JSON.stringify(basket));
-    //sessionStorage.setItem("price",prod.price)
-    //conditionMet= true
     updateSum(prod.price)
+    counter()
 }
 
 
@@ -143,15 +142,30 @@ const drawBasket = () => {
 }
 const pay = () => {
     const sumElement = document.getElementById('sum');
+    const countElement = document.getElementById('ItemsCountText');
     if (sumElement && sessionStorage.getItem("sumToPay") !== null) {
         sumElement.textContent = sessionStorage.getItem("sumToPay");
     }
+  
+    if (countElement && sessionStorage.getItem("ItemsCountText") !== null) {
+        countElement.textContent = sessionStorage.getItem("ItemsCountText");
+    }
 };
+
+
+
+const counter = () => {
+    const current = parseInt(document.getElementById('ItemsCountText').textContent);
+    const newCount= current + 1;
+    document.getElementById('ItemsCountText').textContent = newCount;
+    sessionStorage.setItem('ItemsCountText', newCount)
+}
 
 // Update immediately on load
 // Call updateSum function every 1 second
 
 setInterval(pay, 50);
+//setInterval(counter, 50);
 
 
 pay();
