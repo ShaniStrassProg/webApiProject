@@ -26,7 +26,7 @@ namespace Services
             order.OrderDate =  DateOnly.FromDateTime(DateTime.Now.Date);
             int totalSum = await sumToPay(order.OrderItems);
             if (totalSum != order.OrderSum)
-                _logger.LogError($"sum to pay isn't equal ${order.UserId}");
+                _logger.LogInformation($"sum to pay isn't equal ${order.UserId}");
             order.OrderSum = totalSum;
             return await _orderRepository.addOrder(order);
         }

@@ -13,10 +13,10 @@ namespace Testing
         public PhotoGalleryContext Context { get; private set; }
 
         public DatabaseFixture()
-        {
+        {                           
             // Set up the test database connection and initialize the context
             var options = new DbContextOptionsBuilder<PhotoGalleryContext>()
-                .UseSqlServer("Server=srv2\\pupils;Database=Tests;Trusted_Connection=True;")
+                .UseSqlServer("Server=srv2\\pupils;Database=Tests214725715;Trusted_Connection=True;TrustServerCertificate=True")
                 .Options;
             Context = new PhotoGalleryContext(options);
             Context.Database.EnsureCreated();// create the data base

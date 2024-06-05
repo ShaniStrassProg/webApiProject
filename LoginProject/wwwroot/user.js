@@ -28,14 +28,15 @@ const register = async () => {
 
 
 const update = async () => {
+    const userRes = JSON.parse(sessionStorage.getItem('user'))
     const user = {
-        Email: document.getElementById("email").value,
-        Password: document.getElementById("password").value,
-        FirstName: document.getElementById("firstname").value,
-        LastName: document.getElementById("lastname").value,
+        Email: document.getElementById("email").value || userRes.email ,
+        Password: document.getElementById("password").value || userRes.password, 
+        FirstName: document.getElementById("firstname").value || userRes.firstName, 
+        LastName: document.getElementById("lastname").value || userRes.lastName, 
 
     }
-    const userRes =  JSON.parse(sessionStorage.getItem('user'))
+    debugger;
     const response = await fetch("api/users/" + userRes.userId, {
 
         method: 'PUT',

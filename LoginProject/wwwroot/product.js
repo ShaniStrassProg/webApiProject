@@ -149,16 +149,12 @@ const pay = () => {
 };
 
 // Update immediately on load
-//pay();
-
 // Call updateSum function every 1 second
+
 setInterval(pay, 50);
 
 
-
-
-
-
+pay();
 
 
 getCategories()
