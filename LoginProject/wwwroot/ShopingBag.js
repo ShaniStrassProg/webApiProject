@@ -1,20 +1,62 @@
-﻿//const drowBaskets = (baskets) => {
-//    // Select the <tbody> element
-//    const tbody = document.querySelector("#items tbody");
+﻿function addToBasket(prod) {
 
-//    // Select the <template> element
-//    const template = document.getElementById("temp-row");
+    const basket = JSON.parse(sessionStorage.getItem('basket')) || [];
+    const productIndex = basket.findIndex(product => product.productId === prod.productId);
+    if (productIndex !== -1) {
+        basket[productIndex].quaninty++;
+    } else {
+        prod = { ...prod, quaninty: 1 }
+        basket.push(prod);
+    }
 
-//    // For each product, create a new row and add it to the <tbody>
-//    baskets.forEach(product => {
-//        const clone = template.content.cloneNode(true);
-//        clone.querySelector(".itemName").textContent = product.productName;
-//        clone.querySelector(".availabilityColumn div").textContent = product.description;
-//        clone.querySelector(".itemName").textContent = product.productName,
-//        clone.querySelector(".price").textContent = product.price;
-//        tbody.appendChild(clone);
-//    });
-//}
+    sessionStorage.setItem('basket', JSON.stringify(basket));
+    updateSum(prod.price)
+    counter(+1)
+    updateBasket()
+    alert("add")
+    
+  
+}
+
+const removeFromBasket = (prop) => {
+    const basket = JSON.parse(sessionStorage.getItem('basket')) || [];
+    const productIndex = basket.findIndex(product => product.productId === prop.productId);
+    if (productIndex !== -1) {
+        basket.splice(productIndex, 1);
+        sessionStorage.setItem('basket', JSON.stringify(basket));
+    }
+    alert("remove")
+    updateSum(-1*(prop.price * prop.quaninty))
+    counter(-prop.quaninty)
+    updateBasket()
+   
+    
+}
+function decreaseFromBasket(prod) {
+    const basket = JSON.parse(sessionStorage.getItem('basket')) || [];
+    const productIndex = basket.findIndex(product => product.productId === prod.productId);
+        if (basket[productIndex].quaninty == 1)
+    removeFromBasket(prod)
+        else {
+        basket[productIndex].quaninty--
+        sessionStorage.setItem('basket', JSON.stringify(basket));
+        updateSum(-prod.price)
+        counter(-1)
+    }
+    alert("decrease")
+    updateBasket()
+    
+}
+
+const updateSum = async (sum) => {
+    const newSum = JSON.parse(sessionStorage.getItem("sumToPay"));
+    sessionStorage.setItem('sumToPay', newSum)
+}
+const counter = (c) => {
+    const newCount = JSON.parse(sessionStorage.getItem("ItemsCountText"));
+    sessionStorage.setItem('ItemsCountText', newCount)
+}
+
 
 const getBasketFromStorage = () => {
     const baskets = JSON.parse(sessionStorage.getItem("basket"));
@@ -72,11 +114,18 @@ products.forEach(product => {
 
     clone.querySelector('img').src = `../Images/${product.picture.trim()}.jpg`;
     clone.querySelector('.itemName').textContent = product.productName;
-    clone.querySelector('.itemNumber').textContent = product.productId;
+    clone.querySelector('.itemNumber').textContent = product.quaninty;
     clone.querySelector('.itemDescription').textContent = product.description;
-    clone.querySelector('.price').textContent = product.price;
-    clone.querySelector('.viewLink').href += "#" + product.productId;  // Assuming you append the product id to the URL
-
+    clone.querySelector('.price').textContent = product.price * product.quaninty;
+    clone.querySelector('.removeButton').addEventListener('click', () => {
+        decreaseFromBasket(product)
+    });
+    clone.querySelector('.addButton').addEventListener('click', () => {
+        addToBasket(product)
+    });
+    clone.querySelector('.removeProduct').addEventListener('click', () => {
+        removeFromBasket(product)
+    });
     tbody.appendChild(clone);
 });
 }
@@ -97,6 +146,7 @@ const updateBasket = () => {
     if (totalAmountElement && countItems !== null) {
         totalAmountElement.textContent = parseInt(countItems) || 0;
     }
+    getBasketFromStorage()
 }
 
 

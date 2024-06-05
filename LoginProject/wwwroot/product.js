@@ -3,10 +3,9 @@ let categoryArr = [];
 
 const conditionMet=false
 
-function updateProductInStorage(prod) {
+function addToBasket(prod) {
     const basket = JSON.parse(sessionStorage.getItem('basket')) || [];
     const productIndex = basket.findIndex(product => product.productId === prod.productId);
-    console.log(productIndex)
     if (productIndex !== -1) {
         basket[productIndex].quaninty++;
     } else {
@@ -98,19 +97,19 @@ const filterCategories = async (event, category) => {
 const drowProducts = (products) => {
     const template = document.getElementById('temp-card');
 
-    products.forEach(product => {
-        const clone = template.content.cloneNode(true);
+        products.forEach(product => {
+            const clone = template.content.cloneNode(true);
 
-        clone.querySelector('img').src = `../Images/${product.picture.trim()}.jpg`;
-        clone.querySelector('h1').textContent = product.productName;
-        clone.querySelector('.price').textContent = product.price;
-        clone.querySelector('.description').textContent = product.description;
+            clone.querySelector('img').src = `../Images/${product.picture.trim()}.jpg`;
+            clone.querySelector('h1').textContent = product.productName;
+            clone.querySelector('.price').textContent = product.price;
+            clone.querySelector('.description').textContent = product.description;
 
-        clone.querySelector('button').addEventListener('click', () => {
-            updateProductInStorage(product)
-        });
+            clone.querySelector('button').addEventListener('click', () => {
+                addToBasket(product)
+            });
 
-        document.getElementById('ProductList').appendChild(clone);
+            document.getElementById('ProductList').appendChild(clone);
     });
 }
 
