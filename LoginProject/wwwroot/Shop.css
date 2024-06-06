@@ -74,15 +74,15 @@ td a {
 
 button {
     width: 100%;
-    padding: 15px;
+    /*padding: 15px;*/
     /*linear-gradient(to right, #4e1c81, #00bcd4, #e91e63, #4caf50);*/
-    background-image: linear-gradient(to right, #4e1c81, #00bcd4, #e91e63, #4caf50); /* Gradient: Purple to Green */
-    color: #ffffff; /* White */
-    border: none;
+    /*background-image: linear-gradient(to right, #4e1c81, #00bcd4, #e91e63, #4caf50);*/ /* Gradient: Purple to Green */
+    /*color: #ffffff;*/ /* White */
+    /*border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s;
-    margin-top: 20px;
+    margin-top: 20px;*/
 }
 
     button:hover {

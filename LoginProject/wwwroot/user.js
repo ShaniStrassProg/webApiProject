@@ -29,14 +29,18 @@ const register = async () => {
 
 const update = async () => {
     const userRes = JSON.parse(sessionStorage.getItem('user'))
-    const user = {
-        Email: document.getElementById("email").value || userRes.email ,
-        Password: document.getElementById("password").value || userRes.password, 
-        FirstName: document.getElementById("firstname").value || userRes.firstName, 
-        LastName: document.getElementById("lastname").value || userRes.lastName, 
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const firstName = document.getElementById("firstname").value.trim();
+    const lastName = document.getElementById("lastname").value.trim();
 
-    }
-    debugger;
+    const user = {
+        Email: email !== '' ? email : userRes.email,
+        Password: password !== '' ? password : userRes.password,
+        FirstName: firstName !== '' ? firstName : userRes.firstName,
+        LastName: lastName !== '' ? lastName : userRes.lastName,
+    };
+
     const response = await fetch("api/users/" + userRes.userId, {
 
         method: 'PUT',
@@ -99,11 +103,11 @@ const login = async () => {
         throw new Error(`error! status:${response.status}`)
     }
     else {
-        console.log("gdcrctrf")
+  
 
         //sessionStorage.setItem("id", response.json.UserId);
         sessionStorage.setItem("user", JSON.stringify(data));
-        window.location.href = "Products.html"        
+        window.location.href = "move.html"        
     }
 }
 
