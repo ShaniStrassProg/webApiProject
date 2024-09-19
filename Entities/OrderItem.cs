@@ -14,8 +14,10 @@ public  class OrderItem
     public int OrderId { get; set; }
 
     public int Quaninty { get; set; }
+   
     [JsonIgnore]
     public virtual Order? Order { get; set; } = null!;
+    
     [JsonIgnore]
     public virtual Product? Product { get; set; } = null!;
 }

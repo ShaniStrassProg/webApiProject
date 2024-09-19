@@ -11,6 +11,7 @@ public class UserRegister
 {
     [EmailAddress]
     public string? Email { get; set; }
+   
     [MaxLength(20)]
     public string? FirstName { get; set; }
 

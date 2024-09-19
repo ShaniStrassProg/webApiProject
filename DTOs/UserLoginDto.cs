@@ -11,6 +11,7 @@ public class UserLoginDto
 {
     [EmailAddress]
     public string Email { get; set; }
+    
     [MaxLength(20)]
     public string? Password { get; set; }
 }
