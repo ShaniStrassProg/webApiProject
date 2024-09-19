@@ -13,9 +13,6 @@ namespace Repositories
             _photoGalleryContext = photoGalleryContext;
         }
    
-    
-
-
         public async Task<Order> addOrder(Order order)
         {
             await _photoGalleryContext.Orders.AddAsync(order);
@@ -23,6 +20,5 @@ namespace Repositories
             return order;
         }
 
-    
     }
 }

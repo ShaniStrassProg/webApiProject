@@ -1,13 +1,10 @@
 ﻿using Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-//using Entities;
 using Microsoft.AspNetCore.Identity;
 using Repositories;
 using DTO;
 using AutoMapper;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LoginProject.Controllers
 {

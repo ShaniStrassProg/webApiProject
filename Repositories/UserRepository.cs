@@ -1,7 +1,6 @@
 ﻿using DTO;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
-
 namespace Repositories
    
 {
@@ -21,9 +20,7 @@ namespace Repositories
         }
 
         public async Task<User> addUser(User user)
-        {
-            
-            
+        {  
                 await _photoGalleryContext.Users.AddAsync(user);
                 await _photoGalleryContext.SaveChangesAsync();
                 return user;

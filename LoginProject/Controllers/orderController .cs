@@ -5,8 +5,6 @@ using Repositories;
 using Services;
 using System.Collections.Generic;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace LoginProject.Controllers
 {
     [Route("api/[controller]")]

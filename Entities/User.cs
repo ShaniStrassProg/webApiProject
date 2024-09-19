@@ -7,8 +7,10 @@ namespace Repositories;
 public  class User
 {
     public int UserId { get; set; }
+    
     [EmailAddress]
     public string? Email { get; set; }
+    
     [MaxLength(20)]
     public string? FirstName { get; set; }
 
